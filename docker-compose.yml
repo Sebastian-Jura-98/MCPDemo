@@ -1,0 +1,54 @@
+services: 
+  postgresql:
+    container_name: postgresql
+    image: postgres
+    restart: always
+    hostname: postgresql
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=password
+      - PGDATA=/data/postgres
+    volumes:
+      - ./data/postgresql:/data/postgres
+    networks:
+      - mcpdemo
+  jira:
+    container_name: jira 
+    image: atlassian/jira-software:10.3.9 
+    restart: always
+    depends_on:
+      - postgresql
+    ports:
+      - 8080:8080
+    volumes:
+      - ./data/jira:/var/atlassian/application-data/jira
+    networks:
+      - mcpdemo
+  confluence: 
+    container_name: confluence
+    image: atlassian/confluence:9.2.5-ubi9
+    restart: always
+    ports:
+      - '8090:8090'
+      - '8091:8091'
+    volumes:
+      - ./data/confluence:/var/atlassian/application-data/confluence
+    networks:
+      - mcpdemo
+  mcp-atlassian:
+    container_name: mcp-atlassian
+    image: ghcr.io/sooperset/mcp-atlassian:latest
+    restart: always
+    ports:
+      - 8000:8000
+    command: ["--transport", "sse"]
+    env_file:
+      - .env
+    networks:
+      - mcpdemo
+
+networks:
+  elastic:
+    driver: bridge
+  mcpdemo:
+    driver: bridge

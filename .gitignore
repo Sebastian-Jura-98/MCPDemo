@@ -1,0 +1,9 @@
+.github/instructions/project.instructions.md
+data
+src/MCPDemo/bin
+src/MCPDemo/obj
+src/MCPDemo/.vs
+src/.vs
+elastisearch/esdata
+.env
+*.user
