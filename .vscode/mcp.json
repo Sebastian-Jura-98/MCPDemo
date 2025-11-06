@@ -1,6 +1,7 @@
 {
 	"servers": {
 		"MCP_demo_server": {
+			"type": "sse",
 			"url": "http://localhost:8000/sse"
 		}
 	},

@@ -10,6 +10,7 @@
 }
 
 # Jira and Confluence postgress setup
+
 docker exec -it postgresql psql -h localhost -U root
 
 CREATE USER jira WITH PASSWORD 'password';

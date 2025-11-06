@@ -31,6 +31,6 @@ internal class ToolsResourcesPrompts
     public class SimpleResource
     {
         [McpServerResource, Description("Template for feature request.")]
-        public string GetFeatureRequestTemplate() => "Title, descriptions, acceptance criteria, favourite pet, faviourite color";
+        public string GetFeatureRequestTemplate() => "Title, description, acceptance criteria, favourite pet, faviourite color";
     }
 }
