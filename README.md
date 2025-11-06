@@ -1,4 +1,6 @@
 # Example default configuration
+
+```json
 {
   "inputs": [],
   "servers": {
@@ -8,9 +10,11 @@
     }
   }
 }
+```
 
 # Jira and Confluence postgress setup
 
+```
 docker exec -it postgresql psql -h localhost -U root
 
 CREATE USER jira WITH PASSWORD 'password';
@@ -23,3 +27,4 @@ GRANT ALL ON SCHEMA public TO confluence;
 ALTER DATABASE confluence OWNER TO confluence;
 
 GRANT ALL PRIVILEGES ON DATABASE "confluence" to confluence;
+```
